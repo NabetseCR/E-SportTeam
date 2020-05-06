@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="docs/css/lightbox.min.css">
     <link rel="stylesheet" href="docs/css/utilities.css">
     <link rel="stylesheet" href="docs/css/style.css">
     <title>Welcome To Seattle Impact</title>
 </head>
 <body id="home">
     <header class="hero">
-        <div id="navbar" class="navbar">
+        <div id="navbar" class="navbar top">
             <h1 class="logo">
                 <span class="text-primary"><i class="fas fa-chess-knight"></i>Seattle</span>Impact
             </h1>
@@ -91,20 +93,44 @@
             </header>
             <div class="row">
                 <div class="column">
-                    <img src="docs/img/partners/nike00.jpg" alt="">
-                    <img src="docs/img/partners/nike01.jpg" alt="">
+                    <a href="docs/img/partners/nike00.jpg" data-lightbox="partners"
+                    data-title="Lorem ipsum dolor sit, amet consectetur adipisicing elit.">
+                        <img src="docs/img/partners/nike00.jpg" alt="">
+                    </a>
+                    <a href="docs/img/partners/nike01.jpg" data-lightbox="partners"
+                    data-title="Lorem ipsum dolor sit, amet consectetur adipisicing elit.">
+                        <img src="docs/img/partners/nike01.jpg" alt="">
+                    </a>
                 </div>
                 <div class="column">
-                    <img src="docs/img/partners/redbull02.jpg" alt="">
-                    <img src="docs/img/partners/redbull01.jpg" alt="">
+                    <a href="docs/img/partners/redbull02.jpg" data-lightbox="partners"
+                    data-title="Lorem ipsum dolor sit, amet consectetur adipisicing elit.">
+                        <img src="docs/img/partners/redbull02.jpg" alt="">
+                    </a>
+                    <a href="docs/img/partners/redbull01.jpg" data-lightbox="partners"
+                    data-title="Lorem ipsum dolor sit, amet consectetur adipisicing elit.">
+                        <img src="docs/img/partners/redbull01.jpg" alt="">
+                    </a>
                 </div>
                 <div class="column">
-                    <img src="docs/img/partners/amd00.jpg" alt="">
-                    <img src="docs/img/partners/amd01.jpg" alt="">
+                    <a href="docs/img/partners/amd00.jpg" data-lightbox="partners"
+                    data-title="Lorem ipsum dolor sit, amet consectetur adipisicing elit.">
+                        <img src="docs/img/partners/amd00.jpg" alt="">
+                    </a>
+                    <a href="docs/img/partners/amd01.jpg" data-lightbox="partners"
+                    data-title="Lorem ipsum dolor sit, amet consectetur adipisicing elit.">
+                        <img src="docs/img/partners/amd01.jpg" alt="">
+                    </a>
                 </div>
                 <div class="column">
-                    <img src="docs/img/partners/nvidia00.jpg" alt="">
-                    <img src="docs/img/partners/nvidia01.jpg" alt="">
+                    <a href="docs/img/partners/nvidia00.jpg" data-lightbox="partners"
+                    data-title="Lorem ipsum dolor sit, amet consectetur adipisicing elit.">
+                        <img src="docs/img/partners/nvidia00.jpg" alt="">
+                    </a>
+                    <a href="docs/img/partners/nvidia01.jpg" data-lightbox="partners"
+                    data-title="Lorem ipsum dolor sit, amet consectetur adipisicing elit.">
+                        <img src="docs/img/partners/nvidia01.jpg" alt="">
+                    </a>
                 </div>
             </div>
         </section>
@@ -122,7 +148,7 @@
                         <h4>April 30 2020</h4>
                         <h2>Blog Post</h2>
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi consectetur odio expedita ea deserunt itaque?</p>
-                        <a href="" class="btn btn-outline">
+                        <a href="blog.html" class="btn btn-outline">
                             <i class="fas fa-chevron-right"></i>
                             Read Our Blog
                         </a>
@@ -197,5 +223,45 @@
         </div>
         <p>Copyright &copy; 2020 SeattleImpact</p>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="docs/js/lightbox.min.js"></script>
+    <script>
+        const navbar = document.getElementById('navbar');
+        let scrolled = false;
+
+        window.onscroll = function() {
+            if(window.pageYOffset > 100){
+                navbar.classList.remove('top');
+                if(!scrolled) {
+                    navbar.style.transform = 'translateY(-70px)'; 
+                }
+                setTimeout(function() {
+                    navbar.style.transform = 'translateY(0)';
+                    scrolled = true;
+                }, 200);
+            } else {
+                navbar.classList.add('top');
+                scrolled = false;
+            }
+        }
+
+        // Smooth Scrolling
+        $('#navbar a, .btn').on('click', function(e) {
+            if (this.hash !== '') {
+                e.preventDefault();
+                const hash = this.hash;
+
+                $('html, body').animate(
+                {
+                    scrollTop: $(hash).offset().top - 100,
+                },
+                800  
+                );
+            }
+        });
+
+    </script>
+
 </body>
 </html>
